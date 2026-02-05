@@ -11,11 +11,11 @@ This version includes:
 
 ---
 
-## 1) Prerequisites
+## 1) Prerequisites (Windows)
 
-- Python **3.10+** installed
+- Windows 10 or Windows 11
+- Python **3.10+** installed from python.org
 - `pip` available
-- Windows, macOS, or Linux (UI target is Windows-friendly)
 
 Check your Python version:
 
@@ -25,7 +25,7 @@ python --version
 
 ---
 
-## 2) Install and run
+## 2) Install and run (Windows)
 
 From the project root:
 
@@ -83,10 +83,14 @@ python -m planner_app
 Tasks are stored locally in:
 
 ```text
-~/.planner_app/planner.sqlite3
+%USERPROFILE%\.planner_app\planner.sqlite3
 ```
 
-On Windows, that resolves to your user profile directory (for example, `C:\Users\<you>\.planner_app\planner.sqlite3`).
+Example:
+
+```text
+C:\Users\<you>\.planner_app\planner.sqlite3
+```
 
 ---
 
@@ -117,7 +121,26 @@ That is expected for first run—add tasks from either Week or Month view.
 
 ---
 
-## 6) Developer quick check
+## 6) Build a Windows executable (.exe)
+
+You can build a standalone executable with **PyInstaller**:
+
+```powershell
+pip install pyinstaller
+pyinstaller --name PlannerApp --windowed --noconfirm planner_app\__main__.py
+```
+
+Output:
+- Executable: `dist\PlannerApp\PlannerApp.exe`
+
+Notes:
+- Build on Windows for Windows.
+- SmartScreen may warn for unsigned executables.
+- Rebuild after code changes.
+
+---
+
+## 7) Developer quick check
 
 Run a syntax check:
 

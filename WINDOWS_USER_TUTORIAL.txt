@@ -1,0 +1,158 @@
+Planner App for Windows - Beginner-Friendly Setup Guide
+=======================================================
+
+This guide is written for users who are not very technical.
+Follow it slowly, step by step.
+
+What this app does
+------------------
+- Shows your tasks for a week (today + next 6 days)
+- Lets you create subtasks under a main task
+- Lets you switch to month view and choose a day
+- Saves your tasks on your own computer
+
+
+PART 1 - Install Python (one-time)
+----------------------------------
+1) Open your web browser and go to:
+   https://www.python.org/downloads/
+
+2) Click "Download Python 3.x.x".
+
+3) Run the installer.
+
+4) IMPORTANT: check the box that says:
+   "Add Python to PATH"
+
+5) Click "Install Now".
+
+6) After installation, click "Close".
+
+
+PART 2 - Open the project folder
+--------------------------------
+1) Make sure this Planner App project folder is on your PC.
+
+2) Open File Explorer and go to the project folder.
+
+3) In the folder, click the address bar, type:
+   powershell
+   and press Enter.
+
+A PowerShell window should open in this folder.
+
+
+PART 3 - Create app environment and install app requirements
+------------------------------------------------------------
+Copy and paste each command below into PowerShell, one at a time.
+Press Enter after each one.
+
+1) Check Python:
+   python --version
+
+2) Create a virtual environment:
+   python -m venv .venv
+
+3) Activate the virtual environment:
+   .\.venv\Scripts\Activate.ps1
+
+If you get an execution policy error, run this first:
+   Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+Then run activation again:
+   .\.venv\Scripts\Activate.ps1
+
+4) Install required packages:
+   pip install -r requirements.txt
+
+
+PART 4 - Start the app
+----------------------
+In the same PowerShell window:
+
+   python -m planner_app
+
+The Planner app window should open.
+
+
+PART 5 - Basic use
+------------------
+Week tab:
+- This is the default screen.
+- It shows 7 days: today plus next 6 days.
+- Click "Add Task" to create a new task.
+- Click a task, then "Add Subtask" to add a child task.
+- Use "Edit" to change text/date.
+- Use "Delete" to remove task.
+- Use the checkbox to mark complete.
+
+Month tab:
+- Click a date in the calendar.
+- Tasks for that date appear on the right.
+- Add/edit/delete works the same way.
+
+
+PART 6 - Where your tasks are saved
+-----------------------------------
+Your tasks are stored in a local database file at:
+
+   C:\Users\YOUR_USERNAME\.planner_app\planner.sqlite3
+
+Replace YOUR_USERNAME with your Windows username.
+
+
+PART 7 - Build an executable (.exe)
+-----------------------------------
+You can package the app so it runs like a normal Windows program.
+
+Important:
+- Build on a Windows machine.
+- Keep the same PowerShell window with your virtual environment active.
+
+Step-by-step:
+1) Install packaging tool:
+   pip install pyinstaller
+
+2) Build executable:
+   pyinstaller --name PlannerApp --windowed --noconfirm planner_app\__main__.py
+
+3) When build is done, open this folder:
+   dist\PlannerApp\
+
+4) Run this file:
+   PlannerApp.exe
+
+
+PART 8 - Sharing with another Windows user
+------------------------------------------
+If you send the built app to someone else:
+- Send the whole "dist\PlannerApp" folder, not just one file.
+- They should run PlannerApp.exe from that folder.
+- Windows SmartScreen may show a warning for unsigned apps.
+  They can click "More info" then "Run anyway" if they trust the source.
+
+
+PART 9 - Common problems and fixes
+----------------------------------
+Problem: "python is not recognized"
+Fix:
+- Python may not be installed or PATH was not set.
+- Reinstall Python and ensure "Add Python to PATH" is checked.
+
+Problem: "No module named PySide6"
+Fix:
+- Activate venv and run:
+  pip install -r requirements.txt
+
+Problem: App opens but no tasks are listed
+Fix:
+- Normal for first run. Add tasks manually.
+
+Problem: Can I move my saved tasks to another PC?
+Fix:
+- Yes. Copy this file:
+  C:\Users\YOUR_USERNAME\.planner_app\planner.sqlite3
+- Put it in the same location on the new PC.
+
+
+You're done.
+If you can run `python -m planner_app`, your setup is correct.
