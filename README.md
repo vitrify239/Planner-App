@@ -45,11 +45,6 @@ Activate the virtual environment:
 .venv\Scripts\activate.bat
 ```
 
-### macOS/Linux
-```bash
-source .venv/bin/activate
-```
-
 Install dependencies:
 
 ```bash
